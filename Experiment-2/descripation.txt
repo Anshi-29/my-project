@@ -1,1 +1,8 @@
-here i create a deposite button
+This practical is a small banking web page.
+It shows a balance amount in the center box.
+There are two buttons – one for Deposit and one for Withdraw.
+The design is:
+Simple and clean
+Green button for Deposit, Red button for Withdraw
+Violet background with a white box in the middle
+Text is clear and easy to read
