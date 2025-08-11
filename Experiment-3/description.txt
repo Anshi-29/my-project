@@ -1,0 +1,13 @@
+This admin dashboard is a clean, responsive web interface built with HTML, CSS, and JavaScript. 
+It features a structured layout with a header containing the dashboard title and a dark mode
+ toggle switch, a sidebar with navigation links (Home, Users, Settings), a main content 
+ area displaying a welcome message, and a footer with copyright information.
+
+The design uses CSS Grid for an organized layout, ensuring proper alignment of all sections.
+The theme switcher allows users to toggle between light and dark modes without reloading the page, enhancing usability.
+The dashboard is mobile-friendly, adapting seamlessly to different screen sizes.
+
+Key components include:
+HTML for the basic structure (header, sidebar, main content, footer).
+CSS for styling, including grid layouts and theme-specific colors.
+JavaScript for the interactive theme-switching functionality.
