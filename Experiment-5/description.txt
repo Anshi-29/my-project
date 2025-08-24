@@ -1,0 +1,58 @@
+Dynamic Product Filter 
+
+Introduction
+This project implements a Dynamic Product Filter web page that allows users to filter products based on categories. The application is built using HTML for structure, CSS for styling, and JavaScript for interactivity. The filter dynamically updates the displayed product list whenever a user selects a category from the dropdown menu.
+
+Objective
+The main objective of this project is to demonstrate how DOM manipulation and event handling in JavaScript can be used to build a user-interactive product filtering system. It also showcases the usage of arrays, template literals, and functional programming methods such as .map() and .filter().
+
+Technologies Used
+HTML – For structuring the content and providing dropdown selection.
+CSS – For styling the product list and layout.
+JavaScript – For implementing dynamic filtering logic and updating the DOM.
+
+
+Code Explanation
+1. HTML (index.html)
+A heading "Product List" is displayed at the top.
+A dropdown (<select>) filter provides category options: All, Clothing, Electronics, and Books.
+A container (<div id="product-container">) is used to display filtered products dynamically.
+
+2. CSS (inside <style> block)
+Basic styling is applied to improve readability.
+Products are displayed inside a bordered list box, and each product has its own section with padding.
+A hover effect or styling could be extended for better UI.
+
+3. JavaScript (script.js)
+Product Array: A list of objects representing products (name and category).
+DOM Elements: References to the filter dropdown (category-filter) and the product display container (product-container).
+
+Display Function (displayProducts):
+Uses .map() to convert the list of products into HTML strings.
+Injects the final string into the container using .innerHTML.
+Event Listener:
+Watches for changes in the dropdown menu.
+Uses .filter() to show only the selected category, or all if "All" is chosen.
+
+Working
+When the page loads, all products are displayed by default.
+The user selects a category from the dropdown filter.
+JavaScript detects the change event, filters the product list, and updates the DOM accordingly.
+The displayed list is refreshed dynamically without reloading the page.
+
+
+Learning Outcomes
+By building this project, the following concepts are learned and applied:
+DOM Manipulation: Using document.getElementById() and .innerHTML to update the web page dynamically.
+Event Handling: Implementing event listeners (addEventListener) to react to user interactions.
+Array Methods: Applying .map() to transform arrays into HTML and .filter() to select specific categories.
+Template Literals: Using backticks (``) to embed variables directly into HTML strings.
+Code Modularity: Writing a separate function (displayProducts) improves reusability and readability.
+User Experience Enhancement: Creating an interactive web page where users can filter and view products easily.
+
+Conclusion
+The Dynamic Product Filter project demonstrates how simple HTML, CSS, and JavaScript can be combined to create interactive and dynamic applications. It provides a practical example of filtering data and updating the DOM efficiently, which is a core concept in front-end web development.
+This project can be extended further by adding:
+A search bar to filter products by name.
+Multiple filters (e.g., price range, rating).
+Product images for a real-world e-commerce feel.
