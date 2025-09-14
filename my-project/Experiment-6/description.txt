@@ -1,0 +1,61 @@
+Canvas Drawing Tool 
+
+Introduction
+This experiment implements a Canvas Drawing Tool using HTML5 <canvas> element, styled with CSS, and made interactive using JavaScript. The tool allows users to draw freely with the mouse inside the canvas area, similar to a simple paint application.
+It demonstrates event-driven programming, canvas API usage, and real-time rendering in web applications.
+
+Objective
+The main objective of this project is to understand and implement the HTML5 Canvas API and mouse event handling to enable freehand drawing functionality on a web page.
+
+Technologies Used
+HTML5 – Provides the <canvas> element for drawing.
+CSS – Adds styling to the canvas container and improves the UI.
+JavaScript – Handles mouse events and performs drawing operations using the Canvas 2D context.
+
+Code Explanation
+1. HTML Structure
+A <div class="container"> holds the drawing tool interface.
+Inside, a <canvas> element is defined with a width of 600px and a height of 350px.
+This canvas acts as the drawing area.
+
+2. CSS Styling
+The container is styled with borders, padding, and background for neat presentation.
+The canvas has a light background, border, and a crosshair cursor to indicate drawing functionality.
+
+3. JavaScript Functionality
+getContext('2d'): Gets the 2D drawing context to draw lines.
+
+Variables:
+isDrawing: Tracks whether the user is actively drawing.
+isInsideCanvas: Ensures drawing only happens inside the canvas boundaries.
+lastX, lastY: Store the last mouse position for continuous drawing.
+Event Listeners:
+mousedown – Starts drawing when the mouse is pressed.
+mousemove – Draws lines while moving the mouse if drawing is active.
+mouseup – Stops drawing when the mouse is released.
+mouseenter – Enables drawing only when the mouse is inside the canvas.
+mouseleave – Disables drawing when the mouse leaves the canvas.
+Drawing Process:
+Starts a new path with ctx.beginPath().
+Sets stroke properties (strokeStyle = 'dodgerblue', lineWidth = 2).
+Moves from the last stored position to the new mouse position (moveTo → lineTo).
+Updates the last position after each move for continuous drawing.
+
+Working
+The user clicks inside the canvas to start drawing.
+While dragging the mouse, continuous lines are drawn following the cursor.
+Releasing the mouse button stops drawing.
+Moving the mouse outside the canvas cancels drawing to prevent unwanted strokes.
+
+Learning Outcomes
+By performing this experiment, the following skills are learned:
+HTML5 Canvas API: Understanding how to draw graphics programmatically on the web.
+Mouse Event Handling: Capturing user actions (mousedown, mousemove, mouseup, etc.).
+State Management: Controlling drawing state with flags (isDrawing, isInsideCanvas).
+Real-time Rendering: Continuously updating the canvas for smooth freehand drawing.
+UI/UX Concepts: Providing a simple yet interactive drawing interface for users.
+
+Conclusion
+The Canvas Drawing Tool experiment demonstrates how to build an interactive graphics 
+application using HTML5 Canvas and JavaScript. This experiment highlights the importance of event-driven programming and introduces basic drawing functionalities that can be extended into a full-fledged drawing or annotation application.
+.

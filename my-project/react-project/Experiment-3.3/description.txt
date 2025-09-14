@@ -1,0 +1,109 @@
+DESCRIPTION OF EXPERIMENT:
+
+
+
+<div id="output">
+  <h2>Person Class Hierarchy<br><span class="subtitle">with Student and Teacher Subclasses</span></h2>
+  <p id="student-info">Name: Alice, Age: 20, Course: Computer Science</p>
+  <p id="teacher-info">Name: Mr. Smith, Age: 40, Subject: Mathematics</p>
+  <div class="button-row">
+    <button id="student-btn" class="inherit-btn student-btn">Show Student</button>
+    <button id="teacher-btn" class="inherit-btn teacher-btn">Show Teacher</button>
+  </div>
+  <div id="fact-message" class="inheritance-diagram"></div>----------------------------------------------> CODE
+</div>
+
+
+
+EXPLANATION:
+
+1. Sets up the main UI container, heading, info paragraphs, interactive buttons, and diagram area.
+2. Buttons allow users to trigger the inheritance visualization for Student or Teacher.------------------------EXPLANATION
+
+
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  getInfo() {
+    return `Name: ${this.name}, Age: ${this.age}`;
+  }
+}
+class Student extends Person {
+  constructor(name, age, course) {
+    super(name, age);---------------------------------------------------> CODE 
+    this.course = course;
+  }
+  getInfo() {
+    return `${super.getInfo()}, Course: ${this.course}`;
+  }
+}
+class Teacher extends Person {
+  constructor(name, age, subject) {
+    super(name, age);
+    this.subject = subject;
+  }
+  getInfo() {
+    return `${super.getInfo()}, Subject: ${this.subject}`;
+  }
+}
+
+
+
+
+EXPLANATION:
+
+1. Defines the base Person class and two subclasses, Student and Teacher, using ES6 class syntax.
+2. Student and Teacher extend Person and override getInfo() to add their own details.------------------------------------EXPLANATION
+
+
+
+const student1 = new Student("Alice", 20, "Computer Science");
+const teacher1 = new Teacher("Mr. Smith", 40, "Mathematics");--------------------------------------------> CODE
+document.getElementById("student-info").textContent = student1.getInfo();
+document.getElementById("teacher-info").textContent = teacher1.getInfo();
+
+
+EXPLANATION:
+
+1. Creates instances of Student and Teacher and displays their info in the UI.---------------------------> EXPLANATION
+
+
+
+
+function renderInheritance(type) {
+  let label = type === 'student' ? 'Student' : 'Teacher';
+  let extra = type === 'student' ? 'Course: Computer Science' : 'Subject: Mathematics';
+  let name = type === 'student' ? 'Alice' : 'Mr. Smith';
+  let age = type === 'student' ? '20' : '40';
+  let colorClass = type === 'student' ? 'student' : 'teacher';
+  factMessage.innerHTML = `
+    <div class="inheritance-flex">
+      <div class="inheritance-box person-box">
+        Person<br><span class="inheritance-details">Name: ${name}, Age: ${age}</span>
+      </div>
+      <span class="inheritance-arrow ${colorClass}">→</span>
+      <div class="inheritance-box ${colorClass}-box">
+        ${label}<br><span class="inheritance-details">${extra}</span>
+      </div>
+    </div>
+    <div class="inheritance-label ${colorClass}">Inheritance: <span>${label}</span> <span class="extends">extends</span> <span>Person</span></div>
+  `;
+}
+document.getElementById("student-btn").onclick = function() {
+  renderInheritance('student');
+};
+document.getElementById("teacher-btn").onclick = function() {
+  renderInheritance('teacher');
+};
+---------------------------------------------------------------------------------> CODE
+
+
+
+
+EXPLANATION:
+
+1. When a button is clicked, renders a styled diagram showing how Student or Teacher inherits from Person.
+2. Uses template literals and CSS classes for dynamic, beautiful visualization.---------------------------------------------------> EXPLANATION

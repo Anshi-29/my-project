@@ -1,0 +1,152 @@
+/* Subtitle under main heading */
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #6366f1;
+  letter-spacing: 0.5px;
+}
+
+/* Button row styling */
+.button-row {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.inherit-btn {
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #e0e7ff;
+  transition: background 0.2s;
+}
+.student-btn {
+  background: #6366f1;
+  color: #fff;
+}
+.student-btn:hover {
+  background: #4f46e5;
+}
+.teacher-btn {
+  background: #111;
+  color: #fff;
+}
+.teacher-btn:hover {
+  background: #333;
+}
+
+/* Inheritance diagram styling */
+.inheritance-diagram {
+  margin-top: 1.5rem;
+  min-height: 2.2em;
+}
+.inheritance-flex {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 0.7em;
+}
+.inheritance-box {
+  padding: 0.7em 1.2em;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px #e0e7ff;
+  background: #e0e7ff;
+  border: 2px solid #6366f1;
+  color: #222;
+}
+.person-box {
+  border-color: #6366f1;
+}
+.student-box {
+  background: #6366f1;
+  color: #fff;
+  border-color: #6366f1;
+}
+.teacher-box {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+.inheritance-arrow {
+  font-size: 2em;
+  font-weight: bold;
+}
+.inheritance-arrow.student {
+  color: #6366f1;
+}
+.inheritance-arrow.teacher {
+  color: #111;
+}
+.inheritance-details {
+  font-size: 0.9em;
+  font-weight: 400;
+}
+.inheritance-label {
+  margin-top: 1em;
+  font-size: 0.98em;
+  font-weight: 500;
+}
+.inheritance-label.student {
+  color: #6366f1;
+}
+.inheritance-label.teacher {
+  color: #111;
+}
+.extends {
+  color: #888;
+}
+body {
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#output {
+  max-width: 480px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #3b3b3b;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 1.15rem;
+  color: #444;
+  margin: 0.7rem 0;
+  background: #f1f5fa;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+@media (max-width: 600px) {
+  #output {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  p {
+    font-size: 1rem;
+    padding: 0.5rem 0.7rem;
+  }
+}
