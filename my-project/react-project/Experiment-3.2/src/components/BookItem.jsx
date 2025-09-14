@@ -1,10 +1,9 @@
-function BookItem({ book, onRemove }) {
+import React from 'react';
+
+function BookItem({ title, author }) {
   return (
-    <div id="book-item">
-      <span>
-        <strong>{book.title}</strong> by {book.author}
-      </span>
-      <button onClick={onRemove}>Remove</button>
+    <div className="book-item">
+      <strong>{title}</strong> by {author}
     </div>
   );
 }

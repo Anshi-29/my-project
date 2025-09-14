@@ -1,11 +1,14 @@
-import BookItem from "./BookItem";
+import React from 'react';
+import BookItem from './BookItem.jsx';
 
-function BookList({ books, removeBook }) {
+function BookList({ books }) {
   return (
     <div id="book-list">
-      {books.map((book, index) => (
-        <BookItem key={index} book={book} onRemove={() => removeBook(index)} />
-      ))}
+      {books.length === 0 ? (
+        <p>No books found.</p>
+      ) : (
+        books.map((book, idx) => <BookItem key={idx} {...book} />)
+      )}
     </div>
   );
 }

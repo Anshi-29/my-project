@@ -1,33 +1,36 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
 function BookForm({ addBook }) {
-  const [newTitle, setNewTitle] = useState("");
-  const [newAuthor, setNewAuthor] = useState("");
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
-  const handleAdd = () => {
-    if (newTitle.trim() && newAuthor.trim()) {
-      addBook(newTitle, newAuthor);
-      setNewTitle("");
-      setNewAuthor("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (title && author) {
+      addBook(title, author);
+      setTitle('');
+      setAuthor('');
     }
   };
 
   return (
-    <div id="book-form">
+    <form id="book-form" onSubmit={handleSubmit}>
       <input
+        id="title-input"
         type="text"
         placeholder="New book title"
-        value={newTitle}
-        onChange={(e) => setNewTitle(e.target.value)}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
       <input
+        id="author-input"
         type="text"
         placeholder="New book author"
-        value={newAuthor}
-        onChange={(e) => setNewAuthor(e.target.value)}
+        value={author}
+        onChange={(e) => setAuthor(e.target.value)}
       />
-  <button onClick={handleAdd} style={{background:'#111',color:'#fff'}}>Add Book</button>
-    </div>
+      <button id="add-btn" type="submit">Add Book</button>
+    </form>
   );
 }
 
