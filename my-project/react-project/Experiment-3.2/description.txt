@@ -1,12 +1,23 @@
-DESCRIPTION OF EXPERIMENT:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Library Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app-container">
+    <h2>Library Management</h2>
 
-This experiment implements a simple Library Management system using React. Users can add new books by entering the title and author, search for books by title or author, and view the list of books. The UI is interactive and updates dynamically as books are added or searched.
+    <input id="search-box" type="text" placeholder="Search by title or author">
 
-EXPLANATION:
+    <div id="book-form">
+      <input id="title-input" type="text" placeholder="New book title">
+      <input id="author-input" type="text" placeholder="New book author">
+      <button id="add-btn">Add Book</button>
+    </div>
 
-1. The main UI includes a heading, search box, book form, and book list.
-2. Users can add books and search for them in real time.
-3. The code demonstrates state management and component-based architecture in React.
+    <div id="book-list"></div>------------------------------------------------------------> CODE BLOCK
   </div>
   <script src="script.js"></script>
 </body>
