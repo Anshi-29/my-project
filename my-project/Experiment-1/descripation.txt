@@ -1,8 +1,0 @@
-Description of Student Registration Form:
-This is a simple Student Registration Form made using HTML.
-It includes 3 fields:
-Name – The student has to enter their full name. It will only accept letters and spaces.
-Email – The student must enter a valid email address (like abc@gmail.com).
-Age – The student has to enter their age. It only accepts numbers between 5 and 100.
-HTML5 validation is used, which means if any field is left empty or entered wrong, it will show a message and not allow the form to be submitted.
-The form looks neat and clean with a white background and green submit button.
