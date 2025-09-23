@@ -1,0 +1,70 @@
+Experiment: CLI Employee Management System Using Node.js and Arrays
+
+Objective
+The objective of this experiment is to learn how to build an interactive Command-Line Interface (CLI) application using Node.js.
+It manages employee data stored in memory (using arrays).
+It helps understand Node.js basics, input handling, and array operations without using external files or databases.
+
+Software & Tools Used
+Node.js (JavaScript runtime environment)
+VS Code (IDE for development)
+Built-in readline module of Node.js for capturing user input
+
+Theory
+
+Node.js CLI Applications
+Node.js allows developers to build interactive programs that run directly inside the terminal.
+The readline module is commonly used for taking input from the user.
+
+Arrays in JavaScript
+Arrays are used to store data temporarily in memory during the session.
+Operations like push(), forEach(), splice(), and findIndex() help manage data.
+
+Employee Management System Workflow
+Add Employee → Enter employee name and ID → stored in array.
+List Employees → Display all stored employees.
+Remove Employee → Delete employee by their ID.
+Exit → Close the application.
+
+Code Description
+showMenu() → Displays the main menu and options.
+addEmployee() → Adds new employee details (name + ID) into the array.
+listEmployees() → Prints the list of all employees stored in memory.
+removeEmployee() → Removes employee based on ID using findIndex() and splice().
+employees array → Stores all employee objects in the format {id, name}.
+readline → Keeps the program interactive until user exits.
+
+Execution Steps
+Create project folder → employee-cli
+Initialize Node.js project → npm init -y
+
+Create index.js file and write the code.
+Run program → node index.js
+Choose options to perform operations.
+
+Sample Output
+=== Employee Management System ===
+1. Add Employee
+2. List Employees
+3. Remove Employee by ID
+4. Exit
+Choose an option: 1
+Enter Employee Name: Himanshi
+Enter Employee ID: 101
+Employee Himanshi (ID: 101) added successfully!
+
+=== Employee Management System ===
+1. Add Employee
+2. List Employees
+3. Remove Employee by ID
+4. Exit
+Choose an option: 2
+--- Employee List ---
+1. ID: 101, Name: Himanshi
+
+Conclusion
+This experiment demonstrates how to:
+Build a basic CLI application in Node.js.
+Use arrays to store and manage data in memory.
+Apply fundamental CRUD operations (Create, Read, Delete) on data.
+Strengthen understanding of Node.js input/output handling using readline.

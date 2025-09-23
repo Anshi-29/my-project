@@ -1,0 +1,52 @@
+Title: Concurrent Ticket Booking System with Seat Locking and Confirmation
+
+Objective:
+The objective of this project is to implement a ticket booking system in Node.js using Express.js that safely handles concurrent seat reservation requests. This project demonstrates key backend concepts, including managing in-memory state, handling simultaneous access, preventing race conditions, and designing mechanisms to ensure reliable and fair seat allocation.
+
+Description:
+This project simulates a real-world event or movie theater ticket booking system, focusing on concurrency management and robust seat reservation logic. The system uses an in-memory data structure to track the states of seats, simplifying the implementation while emphasizing the backend logic required to manage multiple users attempting to book simultaneously.
+
+The application implements the following core functionalities:
+View Available Seats (GET /seats) –
+Returns the list of all seats along with their current state: available, locked, or booked. This allows users to select from seats that are free and ready for booking.
+
+Lock a Seat (POST /seats/:id/lock) –
+Temporarily locks a selected seat for a specific user. Once a seat is locked:
+
+It cannot be locked or booked by another user.
+The lock has a time limit (e.g., 1 minute) after which it automatically expires if not confirmed.
+The API provides clear success or error messages if the seat is already locked or booked, ensuring proper user feedback.
+
+Confirm Booking (POST /seats/:id/confirm) –
+Confirms the reservation of a locked seat, changing its state from locked to booked. The system validates whether the seat is currently locked by the requesting user, preventing invalid confirmations and ensuring reliable bookings.
+
+Automatic Lock Expiration –
+Each seat lock automatically expires after a predefined time if the user does not confirm the booking. This feature prevents deadlocks, ensures seat availability for other users, and mimics real-world ticketing systems.
+
+Concurrency Handling –
+The system safely handles simultaneous requests by multiple users. Proper locking logic ensures that no two users can lock or book the same seat at the same time, preventing double booking and ensuring data consistency.
+
+Clear Error and Success Messaging –
+The API returns descriptive messages for all possible scenarios, such as:
+
+Trying to lock an already locked or booked seat
+Attempting to confirm a seat without a valid lock
+Successfully locking or confirming a seat
+
+Technical Highlights & Best Practices:
+In-Memory State Management: Efficiently manages seat states without a database for simplicity, while maintaining accuracy and consistency.
+Concurrency Control: Implements a robust locking mechanism to prevent race conditions and ensure reliable seat allocation under concurrent access.
+RESTful API Design: Follows standard HTTP methods and status codes for intuitive interaction and proper response handling.
+Scalability & Extensibility: While currently in-memory, the design can be extended to persistent databases and distributed systems with minimal changes.
+Testing for Concurrency: Simulates multiple users booking seats simultaneously to validate the locking logic and ensure correctness of the system.
+
+Learning Outcomes:
+
+Understanding concurrent access management in server-side applications.
+Implementing temporary locks with automatic expiration for shared resources.
+Designing a robust, race-condition-free API for real-time seat booking scenarios.
+Practicing Express.js routing, HTTP request handling, and in-memory data manipulation.
+Ensuring clear communication with users via proper error and success messages.
+
+Conclusion:
+This project provides a realistic simulation of a ticket booking system, highlighting the importance of concurrency handling and resource locking in backend development. By implementing seat locks, automatic expiration, and proper validations, the system ensures fair, reliable, and safe seat allocation. It serves as an excellent learning exercise for managing shared resources, designing robust APIs, and understanding real-world backend challenges.
