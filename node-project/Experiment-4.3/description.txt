@@ -1,7 +1,8 @@
 Title: Concurrent Ticket Booking System with Seat Locking and Confirmation
 
 Objective:
-The objective of this project is to implement a ticket booking system in Node.js using Express.js that safely handles concurrent seat reservation requests. This project demonstrates key backend concepts, including managing in-memory state, handling simultaneous access, preventing race conditions, and designing mechanisms to ensure reliable and fair seat allocation.
+The objective of this project is to implement a ticket booking system in Node.js using Express.js that safely handles concurrent seat reservation requests. 
+This project demonstrates key backend concepts, including managing in-memory state, handling simultaneous access, preventing race conditions, and designing mechanisms to ensure reliable and fair seat allocation.
 
 Description:
 This project simulates a real-world event or movie theater ticket booking system, focusing on concurrency management and robust seat reservation logic. The system uses an in-memory data structure to track the states of seats, simplifying the implementation while emphasizing the backend logic required to manage multiple users attempting to book simultaneously.

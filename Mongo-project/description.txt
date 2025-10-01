@@ -1,0 +1,173 @@
+========================
+MongoDB + Express + Postman Project
+========================
+
+1. server.js
+------------
+
+const express = require("express");
+const mongoose = require("mongoose");
+const productRoutes = require("./routes/productRoutes");
+
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(express.json());
+
+// Connect to MongoDB
+mongoose.connect("mongodb://127.0.0.1:27017/productdb", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => console.error(err));
+
+// Routes
+app.use("/products", productRoutes);
+
+// Start server
+app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));
+
+Explanation:
+-------------
+- Imports Express and Mongoose.
+- Connects to MongoDB at local URL `mongodb://127.0.0.1:27017/productdb`.
+- Uses JSON middleware to parse request bodies.
+- Sets up routes for `/products`.
+- Starts the server on port 3000.
+
+------------------------
+2. models/Product.js
+------------------------
+
+const mongoose = require("mongoose");
+
+const productSchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true, unique: true },
+  price: { type: Number, required: true, min: 0 },
+  category: { type: String, required: true }
+}, { timestamps: true });
+
+module.exports = mongoose.model("Product", productSchema);
+
+Explanation:
+-------------
+- Defines the schema for products.
+- Each product must have a `name`, `price`, and `category`.
+- `name` is unique, preventing duplicate entries.
+- `timestamps: true` automatically adds `createdAt` and `updatedAt`.
+- Exports the model for use in routes.
+
+------------------------
+3. routes/productRoutes.js
+------------------------
+
+const express = require("express");
+const Product = require("../models/Product");
+
+const router = express.Router();
+
+// GET all products
+router.get("/", async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// GET single product
+router.get("/:id", async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) return res.status(404).json({ message: "Product not found" });
+    res.json(product);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// POST create product (single or multiple)
+router.post("/", async (req, res) => {
+  try {
+    const data = Array.isArray(req.body) ? req.body : [req.body];
+    const savedProducts = await Product.insertMany(data, { ordered: false });
+    res.status(201).json(savedProducts);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// PUT update product
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!updatedProduct) return res.status(404).json({ message: "Product not found" });
+    res.json(updatedProduct);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+// DELETE product
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(req.params.id);
+    if (!deletedProduct) return res.status(404).json({ message: "Product not found" });
+    res.json({ message: "Product deleted", product: deletedProduct });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+module.exports = router;
+
+Explanation:
+-------------
+- Defines routes for CRUD operations on products.
+- `GET /products` → fetches all products.
+- `GET /products/:id` → fetches a single product by its `_id`.
+- `POST /products` → inserts a single or multiple products. Uses `insertMany` for arrays.
+- `PUT /products/:id` → updates product details.
+- `DELETE /products/:id` → deletes a product.
+- Sends proper HTTP status codes and JSON responses.
+
+------------------------
+4. Postman Usage
+------------------------
+- Start server using `npm start`.
+- **POST**: `http://localhost:3000/products`
+  - Body (raw JSON):
+[
+  { "name": "Laptop", "price": 1200, "category": "Electronics" },
+  { "name": "Phone", "price": 800, "category": "Electronics" },
+  { "name": "Headphones", "price": 150, "category": "Electronics" }
+]
+- **GET**: `http://localhost:3000/products` → fetch all products.
+- **GET**: `http://localhost:3000/products/:id` → fetch single product by ID.
+- **PUT**: `http://localhost:3000/products/:id` → update product.
+- **DELETE**: `http://localhost:3000/products/:id` → delete product.
+
+------------------------
+5. MongoDB Compass
+------------------------
+- Connect to: `127.0.0.1:27017`
+- Database: `productdb`
+- Collection: `products`
+- Verify inserted documents.
+
+------------------------
+6. Notes
+------------------------
+- Make sure `mongod` is running before starting the server.
+- Use VSCode terminal for all commands.
+- Schema ensures `name` is unique to prevent duplicates.
+- Supports inserting multiple products in a single POST request.
+
+========================
