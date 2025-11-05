@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Simple Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  
+  <input type="checkbox" id="theme-toggle" hidden />
+
+  <div class="dashboard">
+    
+    <header class="header">
+      <h1>Admin Dashboard</h1>
+
+      
+      <label class="theme-switch" for="theme-toggle">
+        <input type="checkbox" checked id="theme-toggle-display" />
+        <span>Dark Mode</span>
+      </label>
+    </header>
+
+    <nav class="sidebar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Users</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <h2>Welcome</h2>
+      <p>This is your admin panel.</p>
+    </main>
+
+    <footer class="footer">
+      &copy; 2025 Admin Panel
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+:root {
+  --header-bg: greenyellow;
+  --footer-bg: greenyellow;
+  --sidebar-bg: greenyellow;
+  --bg-color: white;
+  --text-color: black;
+}
+
+#theme-toggle:checked ~ .dashboard {
+  --header-bg: black;
+  --footer-bg: black;
+  --sidebar-bg: #ccc;
+  --bg-color: #222;
+  --text-color: white;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 60px 1fr 40px;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background: var(--header-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px 8px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: var(--sidebar-bg);
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.main {
+  grid-area: main;
+  padding: 20px;
+}
+
+.footer {
+  grid-area: footer;
+  background: var(--footer-bg);
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}

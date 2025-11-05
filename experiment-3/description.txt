@@ -1,0 +1,208 @@
+EXPERIMENT-3:
+
+
+1. SECTION: Top Bar (<header>)
+Goal:
+The goal here was to design a top navigation bar that contains the title "Admin Dashboard" aligned to the left, and a clickable dark mode toggle (styled text) on the right.
+
+--VALIDATION STEPS:
+
+a. Verified that the heading is visible, properly aligned, and readable.
+
+b. Ensured that the dark mode label acts as a toggle (via a hidden checkbox).
+
+c. Checked alignment of all header elements for consistent spacing.
+
+-- POTENTIAL ISSUES ENCOUNTERED:
+
+Occasionally, the toggle text wasn’t aligning properly or overlapping with the title on smaller screens.
+
+2. SECTION: Sidebar (<nav> inside a vertical section):
+
+Goal:
+I created a sidebar that contains navigation links such as Home, Users, and Settings. This section resides on the left side of the layout and uses semantic HTML for clarity.
+
+-- VALIDATION STEPS:
+
+a. Confirmed all links display with default or themed styling (dark/light mode-aware).
+
+b. Verified that the navigation block used appropriate HTML tags (<nav> with unordered list).
+
+c. Ensured good visibility and spacing for clickable links.
+
+-- POTENTIAL ISSUES ENCOUNTERED:
+
+Initial color contrast issues in dark mode, which I later fixed using CSS variables.
+
+3. SECTION: Main Panel (Primary Content Area):
+
+Goal:
+The central area of the dashboard serves as a space for dynamic content such as tables, analytics, or reports. For now, it includes a welcome message and a description.
+
+--VALIDATION STEPS:
+
+a. Verified presence of a proper heading and paragraph in the main panel.
+
+b. Ensured text color adapts correctly based on the theme mode.
+
+c. Used consistent padding and spacing for readability.
+
+-- POTENTIAL ISSUES ENCOUNTERED:
+
+Text was not readable in dark mode until appropriate theme colors were defined using CSS variables.
+
+4. SECTION: Bottom Bar (<footer>):
+
+Goal:
+This is the bottom-most section which provides a simple footer with copyright.
+
+--VALIDATION STEPS:
+
+a. Checked that the footer remains fixed at the bottom regardless of content size.
+
+b. Ensured the footer uses the same color theme as the header for consistency.
+
+c. Confirmed the text “© 2025 Admin Panel” was included and centered.
+
+--POTENTIAL ISSUES ENCOUNTERED:
+
+Needed to fine-tune padding and layout to avoid white space between footer and content in short pages.
+
+5. THEME TOGGLE (Checkbox-Driven, Pure CSS):
+
+Goal:
+Implemented a fully CSS-based dark mode toggle using a hidden checkbox and custom CSS variables. When the user clicks the “Dark Mode” label, the theme switches without using any JavaScript.
+
+--VALIDATION STEPS:
+
+a. Defined all theme-related variables using :root.
+
+b. Used #theme-toggle:checked ~ .dashboard to override color values.
+
+c. Ensured every part of the UI updated properly in both light and dark themes.
+
+--LIGHT THEME:
+
+Header/Footer: Greenyellow
+
+Background: White
+
+Text: Black
+
+--DARK THEME:
+
+Header/Footer: Black
+
+Background: Near black
+
+Text: White
+
+Border: Darkened for contrast
+
+--POTENTIAL ISSUES ENCOUNTERED:
+
+Initially had low contrast for links and text in dark mode.
+
+Required adjustments in main content background and sidebar to maintain legibility.
+
+
+--CSS STYLING STRUCTURE:
+
+1. body (Global Setup)
+Purpose:
+Sets base background, font, and text color using theme variables. Everything inherits from here.
+
+Properties:
+
+background: var(--bg-color);
+color: var(--text-color);
+font-family: sans-serif;
+
+2. .dashboard (Grid Layout Container)
+Purpose:
+Wraps the entire layout using CSS Grid to define structure: Header, Sidebar, Main Content, Footer.
+
+Properties:
+display: grid;
+grid-template-areas:
+  "header header"
+  "sidebar main"
+  "footer footer";
+grid-template-columns: 200px 1fr;
+grid-template-rows: 60px 1fr 40px;
+
+3. .header (Top Navigation Bar)
+Purpose:
+Displays the title and dark mode toggle side by side.
+
+ Properties:
+
+background: var(--header-bg);
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 20px;
+
+4. .sidebar (Navigation Section)
+Purpose:
+Displays navigation links in a vertical column on the left.
+
+ Properties:
+background: var(--sidebar-bg);
+padding: 20px;
+
+5. .main (Main Content Area)
+Purpose:
+Displays central dashboard content like headings, data, or reports.
+
+ Properties:
+background: var(--main-bg);
+padding: 20px;
+
+6. .footer (Bottom Footer Bar)
+Purpose:
+Holds simple bottom bar text, matching header colors.
+
+ Properties:
+
+background: var(--footer-bg);
+text-align: center;
+padding: 10px;
+
+7. CSS VARIABLES: Theme Control
+Defined in :root:
+
+
+--header-bg: greenyellow;
+--footer-bg: greenyellow;
+--sidebar-bg: #ccc;
+--bg-color: white;
+--text-color: black;
+--border-color: #ccc;
+--main-bg: white;
+Dark mode overrides via checkbox:
+
+
+#theme-toggle:checked ~ .dashboard {
+  --header-bg: black;
+  --footer-bg: black;
+  --sidebar-bg: black;
+  --bg-color: #222;
+  --text-color: white;
+  --border-color: #444;
+  --main-bg: black;
+}
+
+
+LEARNINGS & OUTCOMES:
+
+a. Practiced structuring semantic HTML using sections like <header>, <nav>, <footer>, and <main> (or similar).
+
+b. Understood CSS Grid layout for responsive design with fixed and fluid areas.
+
+c. Built a full theme toggle system with only HTML and CSS — no JavaScript used.
+
+d. Used custom properties (--variables) for flexible and manageable theming.
+
+e. Applied best practices in layout, spacing, and responsiveness for small screens.
+
